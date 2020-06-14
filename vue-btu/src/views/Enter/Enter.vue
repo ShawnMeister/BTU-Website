@@ -30,20 +30,39 @@ window.addEventListener("resize", () => {
   camera.updateProjectMatrix();
 });
 
-var geometry = new THREE.SphereGeometry(0, 32, 32);
+var geometry = new THREE.SphereGeometry(0, 10, 32);
 var material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 camera.position.z = 5;
+var light = new THREE.PointLight(0xffffff, 1, 500);
+light.position.set(10, 0, 25);
+scene.add(light);
+
+var flag = true;
 
 function animate() {
   requestAnimationFrame(animate);
   sphere.rotation.x += 0.01;
-  sphere.rotation.y += 0.01;
-  var light = new THREE.PointLight(0xffffff, 1, 500);
-  light.position.set(10, 0, 25);
-  scene.add(light);
+  sphere.rotation.y += 0.02;
+
+  if (flag == false) {
+    sphere.position.x -= 0.02;
+    sphere.position.y -= 0.01;
+    sphere.position.z += 0.025;
+    console.log("going left");
+    if (sphere.position.x <= -5) flag = true;
+  }
+  console.log(sphere.position.x);
+  if (flag == true) {
+    sphere.position.x += 0.02;
+    sphere.position.y += 0.02;
+    sphere.position.z -= 0.05;
+    console.log("going right");
+    if (sphere.position.x >= 5) flag = false;
+    console.log(sphere.position.x);
+  }
 
   renderer.render(scene, camera);
 }

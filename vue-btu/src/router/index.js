@@ -7,11 +7,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/enter",
+    redirect: "/enter"
   },
 
   {
     path: "/home",
+
     name: "Home",
     component: Home,
     meta: {
@@ -19,15 +20,15 @@ const routes = [
       metaTags: [
         {
           name: "Break the Universe",
-          content: "Music, videos, contact, merch",
+          content: "Music, videos, contact, merch"
         },
         {
           /*og:description is the facebook metatag*/
           property: "og:description",
-          content: "Music, videos, contact, merch",
-        },
-      ],
-    },
+          content: "Music, videos, contact, merch"
+        }
+      ]
+    }
   },
   {
     path: "/enter",
@@ -42,20 +43,20 @@ const routes = [
       metaTags: [
         {
           name: "Break the Universe",
-          content: "Music, videos, contact, merch",
+          content: "Music, videos, contact, merch"
         },
         {
           /*og:description is the facebook metatag*/
           property: "og:description",
-          content: "Music, videos, contact, merch",
-        },
-      ],
-    },
-  },
+          content: "Music, videos, contact, merch"
+        }
+      ]
+    }
+  }
 ];
 
 const router = new VueRouter({
-  routes,
+  routes
 });
 
 router.beforeEach((to, from, next) => {
