@@ -2,6 +2,5 @@
 module.exports = {
   // options...
 
-  publicPath: '/vue-btu/'
-
-}
+  publicPath: "",
+};
