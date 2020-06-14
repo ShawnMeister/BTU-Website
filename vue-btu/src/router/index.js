@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home/Home.vue";
 
 Vue.use(VueRouter);
 
@@ -36,7 +36,7 @@ const routes = [
     // this generates a separate chunk (enter.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "enter" */ "../views/Enter.vue"),
+      import(/* webpackChunkName: "enter" */ "../views/Enter/Enter.vue"),
     meta: {
       title: "Break the Universe | Enter",
       metaTags: [
