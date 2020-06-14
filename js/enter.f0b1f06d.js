@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["enter"],{3031:function(e,n,t){"use strict";t.r(n);var r=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},s=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"enter"},[t("h1",[e._v("This is an Entrance page")])])}],a=t("2877"),c={},i=Object(a["a"])(c,r,s,!1,null,null,null);n["default"]=i.exports}}]);
+//# sourceMappingURL=enter.f0b1f06d.js.map
