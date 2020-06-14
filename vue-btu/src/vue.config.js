@@ -1,7 +1,7 @@
 // vue.config.js
-export default {
+module.exports = {
   // options...
 
-  publicPath:'/vue-btu/'
+  publicPath: '/vue-btu/'
 
 }
