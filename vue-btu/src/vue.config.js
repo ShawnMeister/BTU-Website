@@ -2,6 +2,6 @@
 export default {
   // options...
 
-  publicPath='/enter/'
+  publicPath:'/vue-btu/'
 
 }
