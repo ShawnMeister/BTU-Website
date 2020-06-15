@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Hello World" />
+    <HelloWorld msg="Hello World" lnk="<a href='https://www.google.com' > I am a google link </a>" />
   </div>
 </template>
 
