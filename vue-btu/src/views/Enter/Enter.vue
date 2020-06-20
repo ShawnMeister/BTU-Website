@@ -58,7 +58,7 @@ scene.add(backLight);
 scene.add(frontLight);
 
 var flag = true;
-
+//
 function animate() {
   requestAnimationFrame(animate);
   sphere.rotation.x += 0.01;
