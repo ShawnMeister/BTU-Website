@@ -1,5 +1,6 @@
 <template>
   <div class="enter">
+    <h1 style="text-align: center;">Site under development</h1>
     <!-- <router-link class="router-link" to="/home">Home</router-link> -->
   </div>
 </template>
