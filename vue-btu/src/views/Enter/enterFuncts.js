@@ -13,30 +13,33 @@ const white = 0xffffff;
 const gray = 0x999999;
 
 //Environment objects
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
-var renderer = new THREE.WebGLRenderer({ antialias: true });
+let renderer = new THREE.WebGLRenderer({ antialias: true });
 
 //3d object Objects
-var sphereGeometry = new THREE.SphereGeometry(0, 10, 32);
-var cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 64);
-var grayMaterial = new THREE.MeshLambertMaterial({ color: gray });
-var sphere = new THREE.Mesh(sphereGeometry, grayMaterial);
-var cylinder = new THREE.Mesh(cylinderGeometry, grayMaterial);
+// let sphereGeometry = new THREE.SphereGeometry(0, 10, 32);
+// let sphere = new THREE.Mesh(sphereGeometry, grayMaterial);
+let cylinderGeometry = new THREE.CylinderGeometry(1, 1, 1, 64);
+let grayMaterial = new THREE.MeshLambertMaterial({ color: gray });
+let cylinder = new THREE.Mesh(cylinderGeometry, grayMaterial);
 
 //lights
-var topLight = new THREE.DirectionalLight(cyan, 0.5);
-var rightLight = new THREE.DirectionalLight(magenta, 0.5);
-var backLight = new THREE.DirectionalLight(white, 1);
-var frontLight = new THREE.DirectionalLight(white, 0.5);
+let topLight = new THREE.DirectionalLight(cyan, 0.5);
+let rightLight = new THREE.DirectionalLight(magenta, 0.5);
+let backLight = new THREE.DirectionalLight(white, 1);
+let frontLight = new THREE.DirectionalLight(white, 0.5);
 
-//to animate tilt
-var tiltFlag = true;
+//animation letiables
+let tiltFlag = true;
+// let switchSign = 1;
+// let random = 0;
+
 
 //---------------------------------------------------------//
 //                      FUNCTIONS
@@ -49,7 +52,7 @@ function rendererSetup() {
 }
 
 function addSceneObjects() {
-  scene.add(sphere);
+
   scene.add(cylinder);
   cylinder.rotation.x = 1.4;
 }
@@ -74,40 +77,53 @@ function animate() {
 
   requestAnimationFrame(animate);
 
-  //resize frame and objects dynamically
-  resizeFrameDynamically();
 
+  resizeFrameDynamically();
   tiltAnimation();
-  sphere.rotation.x += 0.01;
-  sphere.rotation.y += 0.05;
+
 
 
   renderer.render(scene, camera);
 
   function tiltAnimation() {
+    // random = Math.random(1) * switchSign;
 
-    if (tiltFlag == false) {
-      cylinder.rotation.y += 0.1;
-      cylinder.rotation.x += 0.001;
-      sphere.position.x -= 0.02;
-      sphere.position.y -= 0.01;
-      sphere.position.z += 0.025;
-      console.log("going left");
-      if (sphere.position.x <= -5) tiltFlag = true;
-    }
-    console.log(sphere.position.x);
-    if (tiltFlag == true) {
-      cylinder.rotation.y += 0.1;
-      cylinder.rotation.x -= 0.001;
-      sphere.position.x += 0.02;
-      sphere.position.y += 0.02;
-      sphere.position.z -= 0.05;
-      console.log("going right");
-      if (sphere.position.x >= 5) tiltFlag = false;
-      console.log(sphere.position.x);
+    xLogic();
+
+
+
+
+    function xLogic() {
+
+      if (tiltFlag == false) {
+        cylinder.rotation.x -= 0.006;
+        // cylinder.rotation.z -= 0.003 * random;
+
+
+        console.log("going left " + cylinder.rotation.z);
+        if (cylinder.rotation.x <= 1) {
+          tiltFlag = true;
+          // if (Math.random < 0.5);
+          // switchSign = -1;
+        }
+      }
+
+      if (tiltFlag == true) {
+        cylinder.rotation.x += 0.006;
+        // cylinder.rotation.z += 0.003 * random;
+        console.log("going right " + cylinder.rotation.z);
+        if (cylinder.rotation.x >= 2) {
+          tiltFlag = false;
+          // if (Math.random < 0.5)
+          // switchSign = -1;
+        }
+      }
+
     }
   }
 
+
+  //resize frame and objects dynamically
   function resizeFrameDynamically() {
     window.addEventListener("resize", () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -116,7 +132,7 @@ function animate() {
         2 *
         THREE.Math.RAD2DEG;
       camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectMatrix();
+      camera.updateProjectionMatrix();
     });
   }
 
