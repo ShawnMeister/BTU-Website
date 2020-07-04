@@ -1,4 +1,7 @@
 import * as THREE from "three";
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM("");
+const $ = require("jquery")(window);
 
 //---------------------------------------------------------//
 //                     VARIABLES
