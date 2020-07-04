@@ -11,7 +11,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",
-    "jsdom": "^16.2.2",
+    "jquery-toast-plugin": "^1.3.2",
     "three": "^0.117.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"

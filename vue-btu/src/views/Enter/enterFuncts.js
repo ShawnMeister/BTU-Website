@@ -1,12 +1,19 @@
 import * as THREE from "three";
-const { JSDOM } = require("jsdom");
-const { window } = new JSDOM("");
-const $ = require("jquery")(window);
+import $ from 'jquery';
+import 'jquery-toast-plugin/dist/jquery.toast.min' # path to the plugin
+window.jQuery = window.$ = $;
+$.toast({
+  heading: 'Success',
+  text: 'Success',
+  showHideTransition: 'slide',
+  icon: 'success',
+  loaderBg: '#19c520',
+  position: 'top-right'
+});
 
 //---------------------------------------------------------//
 //                     VARIABLES
 //---------------------------------------------------------//
-
 
 //Colors
 const eggplant = 0x0c000a;
@@ -192,17 +199,10 @@ function animate() {
 
   requestAnimationFrame(animate);
 
-
   resizeFrameDynamically();
   tiltAnimation();
 
-
   renderer.render(scene, camera);
-
-
-
-
-
 
   function tiltAnimation() {
     // random = Math.random(1) * switchSign;
