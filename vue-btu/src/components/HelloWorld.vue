@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }} Me confused</h1>
+    <h1>{{ msg }}</h1>
     <p v-html="lnk"></p>
 
     <p>But no really though</p>
