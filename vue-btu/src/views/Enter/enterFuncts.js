@@ -1,19 +1,11 @@
 import * as THREE from "three";
 import $ from 'jquery';
-// const curl = require("curl");
-// const jsdom = require("jsdom");
-// function parseData(html) {
-//   const { JSDOM } = jsdom;
-//   const dom = new JSDOM(html);
-//   const $ = (require('jquery'))(dom.window);
-//   //let's start extracting the data
-//   //... start using jquery as $ like you would in a browser
-// }
 
 
 //---------------------------------------------------------//
 //                     VARIABLES
 //---------------------------------------------------------//
+
 
 //Colors
 const eggplant = 0x0c000a;
@@ -67,7 +59,7 @@ function rendererSetup() {
   document.body.appendChild(renderer.domElement);
   window.addEventListener('click', onMouseClick, false);
   window.addEventListener('mousemove', onMouseOver, false);
-  window.addEventListener('mouseout', onMouseOut, false);
+
 
 }
 
@@ -116,52 +108,19 @@ function onMouseOver(event) {
 
     // if there is an object in the raycaster
     if (intersects.length > 0) {
-      console.log(intersects[0].object);
+
       $('html,body').css('cursor', 'pointer');
+
 
     } else {
       $('html,body').css('cursor', 'default');
 
     }
-
   }
-
 }
-
-function onMouseOut(event) {
-  event.preventDefault();
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-
-  makeCursorHand();
-
-  function makeCursorHand() {
-    // update the picking ray with the camera and mouse position
-    raycaster.setFromCamera(mouse, camera);
-
-    // calculate objects intersecting the picking ray
-    let intersects = raycaster.intersectObjects(scene.children);
-
-    // if there is an object in the raycaster
-    if (intersects.length > 0) {
-      if (INTERSECTED != intersects[0].object) {
-
-        INTERSECTED = intersects[0].object;
-        document.body.style.cursor = "pointer";
-      }
-    }
-
-  }
-
-}
-
-
-
 
 function onMouseClick(event) {
 
-  console.log("working or what?");
 
   // calculate mouse position in normalized device coordinates
   // (-1 to +1) for both components
@@ -179,12 +138,19 @@ function onMouseClick(event) {
 
     // if there is an object in the raycaster
     if (intersects.length > 0) {
-      console.log(intersects[0].object);
+
       if (INTERSECTED != intersects[0].object) {
 
         INTERSECTED = intersects[0].object;
         INTERSECTED.material.emissive.setHex(cyan);
+
+        window.location.href = './home#/home';
+
+
+
+
       }
+
     } else {
       if (INTERSECTED) {
 
