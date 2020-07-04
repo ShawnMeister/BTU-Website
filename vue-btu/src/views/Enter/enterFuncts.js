@@ -1,15 +1,15 @@
 import * as THREE from "three";
 import $ from 'jquery';
-import 'jquery-toast-plugin/dist/jquery.toast.min' # path to the plugin
-window.jQuery = window.$ = $;
-$.toast({
-  heading: 'Success',
-  text: 'Success',
-  showHideTransition: 'slide',
-  icon: 'success',
-  loaderBg: '#19c520',
-  position: 'top-right'
-});
+// const curl = require("curl");
+// const jsdom = require("jsdom");
+// function parseData(html) {
+//   const { JSDOM } = jsdom;
+//   const dom = new JSDOM(html);
+//   const $ = (require('jquery'))(dom.window);
+//   //let's start extracting the data
+//   //... start using jquery as $ like you would in a browser
+// }
+
 
 //---------------------------------------------------------//
 //                     VARIABLES
@@ -66,7 +66,7 @@ function rendererSetup() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
   window.addEventListener('click', onMouseClick, false);
-  window.addEventListener('mouseover', onMouseOver, false);
+  window.addEventListener('mousemove', onMouseOver, false);
   window.addEventListener('mouseout', onMouseOut, false);
 
 }
@@ -104,8 +104,6 @@ function onMouseOver(event) {
   event.preventDefault();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-
   makeCursorHand();
 
   function makeCursorHand() {
@@ -115,11 +113,15 @@ function onMouseOver(event) {
     // calculate objects intersecting the picking ray
     let intersects = raycaster.intersectObjects(scene.children);
 
+
     // if there is an object in the raycaster
     if (intersects.length > 0) {
+      console.log(intersects[0].object);
       $('html,body').css('cursor', 'pointer');
+
     } else {
       $('html,body').css('cursor', 'default');
+
     }
 
   }
@@ -177,6 +179,7 @@ function onMouseClick(event) {
 
     // if there is an object in the raycaster
     if (intersects.length > 0) {
+      console.log(intersects[0].object);
       if (INTERSECTED != intersects[0].object) {
 
         INTERSECTED = intersects[0].object;
