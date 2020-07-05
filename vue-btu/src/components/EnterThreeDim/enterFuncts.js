@@ -144,7 +144,7 @@ function onMouseClick(event) {
         INTERSECTED = intersects[0].object;
         INTERSECTED.material.emissive.setHex(cyan);
 
-        window.location.href = './home#/home';
+        window.location.href = './#/home';
 
 
 

@@ -15,6 +15,7 @@
 body {
   margin: 0px;
   height: 100vh;
+  background-color: #0c000a;
 }
 
 canvas {

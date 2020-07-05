@@ -1,8 +1,9 @@
 <template>
   <div class="enter">
     <span>
-      <router-link id="home" class="router-link" to="/home">Home</router-link>
+      <!-- <router-link id="home" class="router-link" to="/home">Home</router-link> -->
     </span>
+    <EnterThreeDim />
   </div>
 </template>
 
@@ -11,13 +12,13 @@
 </style>
 
 <script>
-import * as enterFuncts from "./enterFuncts.js";
+import EnterThreeDim from "@/components/EnterThreeDim/EnterThreeDim.vue";
 
-enterFuncts.rendererSetup();
-enterFuncts.addSceneObjects();
-enterFuncts.addSceneLights();
-enterFuncts.setCameraPosition();
-enterFuncts.animate();
-
-export default {};
+//Not sure if name should be Home or Enter
+export default {
+  name: "Enter",
+  components: {
+    EnterThreeDim
+  }
+};
 </script>
