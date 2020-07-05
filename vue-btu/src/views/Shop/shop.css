@@ -38,4 +38,9 @@
   border-radius: 4px;
   padding: 0.5rem;
 }
+
+.shirt img {
+  max-width: 100%;
+  height: auto;
+}
 /*# sourceMappingURL=shop.css.map */
