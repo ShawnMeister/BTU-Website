@@ -1,11 +1,9 @@
 import * as THREE from "three";
-import $ from 'jquery';
-
+import $ from "jquery";
 
 //---------------------------------------------------------//
 //                     VARIABLES
 //---------------------------------------------------------//
-
 
 //Colors
 const eggplant = 0x0c000a;
@@ -47,8 +45,6 @@ let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 let INTERSECTED;
 
-
-
 //---------------------------------------------------------//
 //                      FUNCTIONS
 //---------------------------------------------------------//
@@ -57,18 +53,14 @@ function rendererSetup() {
   renderer.setClearColor(eggplant);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-  window.addEventListener('click', onMouseClick, false);
-  window.addEventListener('mousemove', onMouseOver, false);
-
-
+  window.addEventListener("click", onMouseClick, false);
+  window.addEventListener("mousemove", onMouseOver, false);
 }
 
 function addSceneObjects() {
-
   scene.add(cylinder);
   cylinder.rotation.x = degToRad(60);
   cylinder.rotation.z = degToRad(30);
-
 }
 
 const addSceneLights = () => {
@@ -80,7 +72,7 @@ const addSceneLights = () => {
   rightLight.position.set(25, 15, 25);
   backLight.position.set(-25, -25, -100);
   frontLight.position.set(0, 10, 250);
-}
+};
 
 function setCameraPosition() {
   camera.position.z = 5;
@@ -91,11 +83,10 @@ function degToRad(deg) {
   return deg * 0.01745329252;
 }
 
-
 function onMouseOver(event) {
   event.preventDefault();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   makeCursorHand();
 
   function makeCursorHand() {
@@ -105,28 +96,21 @@ function onMouseOver(event) {
     // calculate objects intersecting the picking ray
     let intersects = raycaster.intersectObjects(scene.children);
 
-
     // if there is an object in the raycaster
     if (intersects.length > 0) {
-
-      $('html,body').css('cursor', 'pointer');
-
-
+      $("html,body").css("cursor", "pointer");
     } else {
-      $('html,body').css('cursor', 'default');
-
+      $("html,body").css("cursor", "default");
     }
   }
 }
 
 function onMouseClick(event) {
-
-
   // calculate mouse position in normalized device coordinates
   // (-1 to +1) for both components
   event.preventDefault();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   rayCaster();
 
   function rayCaster() {
@@ -138,34 +122,23 @@ function onMouseClick(event) {
 
     // if there is an object in the raycaster
     if (intersects.length > 0) {
-
       if (INTERSECTED != intersects[0].object) {
-
         INTERSECTED = intersects[0].object;
         INTERSECTED.material.emissive.setHex(cyan);
 
-        window.location.href = './#/home';
-
-
-
-
+        window.location.href = "./#/home";
       }
-
     } else {
       if (INTERSECTED) {
-
         INTERSECTED.material.emissive.setHex(eggplant);
       }
 
       INTERSECTED = null;
     }
-
   }
 }
 
 function animate() {
-
-
   requestAnimationFrame(animate);
 
   resizeFrameDynamically();
@@ -180,11 +153,9 @@ function animate() {
     zLogic();
 
     function xLogic() {
-
       if (tiltFlagX == false) {
         cylinder.rotation.x -= degToRad(0.035);
         // cylinder.rotation.z -= 0.003 * random;
-
 
         // console.log("going up " + cylinder.rotation.z);
         if (cylinder.rotation.x <= 1) {
@@ -205,10 +176,8 @@ function animate() {
           // switchSign = -1;
         }
       }
-
     }
     function zLogic() {
-
       if (tiltFlagZ == false) {
         cylinder.rotation.z -= 0.006;
 
@@ -224,13 +193,10 @@ function animate() {
         // console.log("going right " + cylinder.rotation.z);
         if (cylinder.rotation.z >= 3.5) {
           tiltFlagZ = false;
-
         }
       }
-
     }
   }
-
 
   //resize frame and objects dynamically
   function resizeFrameDynamically() {
@@ -244,7 +210,23 @@ function animate() {
       camera.updateProjectionMatrix();
     });
   }
-
 }
 
-export { addSceneLights, rendererSetup, addSceneObjects, animate, setCameraPosition };
+const cursorData = {
+  el: ".enter",
+
+  data() {
+    return {
+      selectedCursor: `pointer`,
+    };
+  },
+};
+
+export {
+  addSceneLights,
+  rendererSetup,
+  addSceneObjects,
+  animate,
+  setCameraPosition,
+  cursorData,
+};

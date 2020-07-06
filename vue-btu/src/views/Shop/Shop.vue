@@ -4,25 +4,11 @@
 
     <div class="headline">Break The Universe</div>
 
-    <div class="merch-grid">
-      <div class="shirt">
-        <h3>
-          BTU
-          <br />Standard Shirt
-        </h3>
-      </div>
-      <div class="shirt">
-        <h3>
-          BTU
-          <br />Standard Shirt
-          <img src="@/assets/btu-standard-shirt.png" alt />
-        </h3>
-      </div>
-      <div class="shirt">
-        <h3>
-          BTU
-          <br />Standard Shirt
-        </h3>
+    <div id="merch-grid">
+      <div v-for="n  in 99 " :key="n" class="shirt">
+        <h3>asdf</h3>
+        {{msg}}
+        <img src="@/assets/btu-standard-shirt.png" alt />
       </div>
     </div>
   </div>
@@ -36,11 +22,9 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld/HelloWorld.vue";
 
-//not sure what "name: ??" should be
-// export default {
-//   name: "Shop",
-//   components: {
-//     HelloWorld
-//   }
-// };
+export default {
+  data: function() {
+    return { msg: "dude really?" };
+  }
+};
 </script>
