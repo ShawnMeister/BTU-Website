@@ -1,0 +1,23 @@
+{
+  "name": "btu-website",
+  "version": "1.0.0",
+  "description": "Website for BTU",
+  "main": "index.ts",
+  "dependencies": {
+    "vue-threejs": "^0.2.0-alpha.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShawnMeister/BTU-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShawnMeister/BTU-Website/issues"
+  },
+  "homepage": "https://github.com/ShawnMeister/BTU-Website#readme"
+}
