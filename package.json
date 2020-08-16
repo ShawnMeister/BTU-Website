@@ -10,12 +10,19 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "test": "test"
+    "test": "test",
+    "backend": "npx nodemon api/server.ts"
   },
   "main": "index.ts",
   "dependencies": {
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.10.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
@@ -28,6 +35,7 @@
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^5.2.4",
+    "@types/mongoose": "^5.7.36",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-pwa": "~4.5.0",
@@ -38,20 +46,23 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/test-utils": "^1.0.3",
     "chai": "^4.1.2",
+    "nodemon": "^2.0.4",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   },
-  "_id": "btu-website@1.0.0",
   "bugs": {
     "url": "https://github.com/ShawnMeister/BTU-Website/issues"
   },
   "homepage": "https://github.com/ShawnMeister/BTU-Website#readme",
   "license": "ISC",
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShawnMeister/BTU-Website.git"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": []
 }

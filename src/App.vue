@@ -4,8 +4,8 @@
 			<router-link to="/">Home</router-link>&nbsp;|
 			<router-link to="/about">About</router-link>&nbsp;|
 			<router-link to="/shop">Shop</router-link>&nbsp;|
-			<router-link to="/create">Create Post</router-link>
-			
+			<router-link to="/create">Create Post</router-link>&nbsp;|
+			<router-link to="/posts">Posts</router-link>
 		</div>
 		<router-view />
 	</div>
@@ -37,13 +37,28 @@
 	$btu-dry_steel: rgba(58.000000342727, 63.000000044703, 80.000002831221, 1);
 
 	body {
-		background-color: $btu-dry_black;
+		background-color: $btu-dry_black !important;
 
 		#app {
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 			text-align: center;
 			color: $btu-green;
+
+			.btn-primary {
+				background-color: $btu-juicy_blue;
+				color: $btu-green;
+				border-color: $btu-dry-blue;
+			}
+
+			.btn-primary:hover {
+				background-color: $btu-dry_blue;
+			}
+
+			th {
+				background-color: $btu-juicy_black;
+				color: $btu-dry_ginger;
+			}
 
 			h1,
 			h2,
@@ -53,6 +68,10 @@
 			h6 {
 				font-family: Iceberg, Arial, sans-serif;
 				text-shadow: -2px 2px 2px $btu-juicy_green;
+			}
+
+			h4 {
+				color: $btu-blue;
 			}
 
 			#nav {
