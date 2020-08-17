@@ -1,13 +1,13 @@
 // post.model.js
-
-import express from "express";
+export {};
+const express = require("express");
 const postRoutes = express.Router();
 
 // Require Post model in our routes module
 let Post = require("./post.model");
 
 // Defined store route
-postRoutes.route("/add").post(function(req, res) {
+postRoutes.route("/add").post(function(req: any, res: any) {
   let post = new Post(req.body);
   post
     .save()
@@ -20,8 +20,8 @@ postRoutes.route("/add").post(function(req, res) {
 });
 
 // Defined get data(index or listing) route
-postRoutes.route("/").get(function(req, res) {
-  Post.find(function(err, posts) {
+postRoutes.route("/").get(function(req: any, res: any) {
+  Post.find(function(err: string, posts: any) {
     if (err) {
       res.json(err);
     } else {
@@ -31,9 +31,9 @@ postRoutes.route("/").get(function(req, res) {
 });
 
 // Defined edit route
-postRoutes.route("/edit/:id").get(function(req, res) {
+postRoutes.route("/edit/:id").get(function(req: any, res: any) {
   let id = req.params.id;
-  Post.findById(id, function(err, post) {
+  Post.findById(id, function(err: string, post: any) {
     if (err) {
       res.json(err);
     }
@@ -42,8 +42,8 @@ postRoutes.route("/edit/:id").get(function(req, res) {
 });
 
 //  Defined update route
-postRoutes.route("/update/:id").post(function(req, res) {
-  Post.findById(req.params.id, function(err, post) {
+postRoutes.route("/update/:id").post(function(req: any, res: any) {
+  Post.findById(req.params.id, function(err: string, post: any) {
     if (!post) res.status(404).send("data is not found");
     else {
       post.title = req.body.title;
@@ -61,8 +61,8 @@ postRoutes.route("/update/:id").post(function(req, res) {
 });
 
 // Defined delete | remove | destroy route
-postRoutes.route("/delete/:id").delete(function(req, res) {
-  Post.findByIdAndRemove({ _id: req.params.id }, function(err) {
+postRoutes.route("/delete/:id").delete(function(req: any, res: any) {
+  Post.findByIdAndRemove({ _id: req.params.id }, function(err: string) {
     if (err) res.json(err);
     else res.json("Successfully removed");
   });

@@ -19,7 +19,7 @@
 	$btu-blue: rgba(120.00000044703, 179.00000452995, 211.0000026226, 1);
 	$btu-green: rgba(94.000001996756, 187.00000405312, 180.00000447035, 1);
 	$btu-medium: rgba(56.000000461936, 73.000003248453, 97.000001817942, 1);
-	$btu-dark: rgba(19.00000076741, 15.000000055879, 38.00000153482, 1);
+	$btu-black: rgba(19.00000076741, 15.000000055879, 38.00000153482, 1);
 	$btu-dry_ginger: rgba(117.00000062585, 70.000003427267, 76.000003069639, 1);
 	$btu-juicy_ginger: rgba(111.00000098348, 70.000003427267, 55.000000521541, 1);
 	$btu-pickled_ginger: rgba(233.0000013113, 190.0000038743, 152.00000613928, 1);
@@ -45,6 +45,10 @@
 			text-align: center;
 			color: $btu-green;
 
+			.no-border {
+				border-width: 0px !important;
+			}
+
 			.btn-primary {
 				background-color: $btu-juicy_blue;
 				color: $btu-green;
@@ -56,8 +60,14 @@
 			}
 
 			th {
-				background-color: $btu-juicy_black;
-				color: $btu-dry_ginger;
+				background-color: $btu-juicy_green;
+				color: $btu-blue;
+			}
+			//since delete button is part of the table, made this class
+			//for the actual data
+			.t-data {
+				background-color: $btu-green !important;
+				color: $btu-juicy_blue !important;
 			}
 
 			h1,
@@ -86,6 +96,9 @@
 					&.router-link-exact-active {
 						color: $btu-red;
 					}
+				}
+				a:hover {
+					color: $btu-juicy_ginger;
 				}
 			}
 		}
