@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const config = require("./DB.ts");
 const postRoute = require("./post.route");
 
+
 mongoose.Promise = global.Promise;
 mongoose
   .connect(config.DB, { useUnifiedTopology: true, useNewUrlParser: true })
