@@ -12,7 +12,7 @@
 		"lint": "vue-cli-service lint",
 		"test": "test",
 		"start": "npx nodemon api/server.ts",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
 	},
 	"main": "index.ts",
 	"dependencies": {

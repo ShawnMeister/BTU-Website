@@ -8,6 +8,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const config = require("./DB.ts");
 const postRoute = require("./post.route");
+const path = require('path');
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -27,6 +28,16 @@ app.use(bodyParser.json());
 
 app.use("/posts", postRoute);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("Server is running on Port:", PORT);
 });
+
+
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+  })
+}
