@@ -11,7 +11,8 @@
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint",
 		"test": "test",
-		"start": "npx nodemon api/server.ts"
+		"start": "npx nodemon api/server.ts",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
 	},
 	"main": "index.ts",
 	"dependencies": {
@@ -33,6 +34,9 @@
 		"vue-router": "^3.2.0",
 		"vue-threejs": "^0.2.0-alpha.1",
 		"vuex": "^3.4.0"
+	},
+	"engines": {
+		"node": "12.18.3"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.2.11",
