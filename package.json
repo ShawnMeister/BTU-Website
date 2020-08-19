@@ -11,7 +11,7 @@
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint",
 		"test": "test",
-		"start": "npx nodemon api/server.ts"
+		"backend": "npx nodemon api/server.ts"
 	},
 	"main": "index.ts",
 	"dependencies": {
@@ -25,6 +25,7 @@
 		"mongod": "^2.0.0",
 		"mongoose": "^5.10.0",
 		"register-service-worker": "^1.7.1",
+		"ts-node": "^8.10.2",
 		"vue": "^2.6.11",
 		"vue-axios": "^2.1.5",
 		"vue-class-component": "^7.2.3",
@@ -51,7 +52,7 @@
 		"nodemon": "^2.0.4",
 		"sass": "^1.26.5",
 		"sass-loader": "^8.0.2",
-		"typescript": "~3.9.3",
+		"typescript": "^3.9.7",
 		"vue-template-compiler": "^2.6.11"
 	},
 	"bugs": {
