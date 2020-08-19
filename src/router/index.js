@@ -5,7 +5,7 @@ import IndexComponent from "../components/IndexComponent.vue";
 
 Vue.use(VueRouter);
 
-const routes: RouteConfig[] = [
+const routes = [
   {
     path: "/",
     name: "Home",

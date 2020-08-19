@@ -11,12 +11,12 @@
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint",
 		"test": "test",
-		"start": "node api/server.ts",
-		"backend": "nodemon api/server.ts",
+		"start": "node api/server.js",
+		"backend": "nodemon api/server.js",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build",
 		"dev": "concurrently \"npm run backend\" \"npm run frontend\""
 	},
-	"main": "index.ts",
+	"main": "index.js",
 	"dependencies": {
 		"@types/cors": "^2.8.7",
 		"@vue/cli": "^4.5.4",
@@ -50,7 +50,6 @@
 		"@vue/cli-plugin-e2e-cypress": "~4.5.0",
 		"@vue/cli-plugin-pwa": "~4.5.0",
 		"@vue/cli-plugin-router": "~4.5.0",
-		"@vue/cli-plugin-typescript": "~4.5.0",
 		"@vue/cli-plugin-unit-mocha": "~4.5.0",
 		"@vue/cli-plugin-vuex": "~4.5.0",
 		"@vue/cli-service": "~4.5.0",
@@ -59,8 +58,6 @@
 		"nodemon": "^2.0.4",
 		"sass": "^1.26.5",
 		"sass-loader": "^8.0.2",
-		"tslint": "^6.1.3",
-		"typescript": "^3.9.7",
 		"vue-template-compiler": "^2.6.11"
 	},
 	"bugs": {
