@@ -1,13 +1,14 @@
 // post.model.js
-export {};
+export { };
 const express = require("express");
 const postRoutes = express.Router();
+const path = require('path');
 
 // Require Post model in our routes module
 let Post = require("./post.model");
 
 // Defined store route
-postRoutes.route("/add").post(function(req: any, res: any) {
+postRoutes.route("/add").post(function (req, res) {
   let post = new Post(req.body);
   post
     .save()
@@ -20,8 +21,8 @@ postRoutes.route("/add").post(function(req: any, res: any) {
 });
 
 // Defined get data(index or listing) route
-postRoutes.route("/").get(function(req: any, res: any) {
-  Post.find(function(err: string, posts: any) {
+postRoutes.route("/").get(function (req, res) {
+  Post.find(function (err, posts) {
     if (err) {
       res.json(err);
     } else {
@@ -31,9 +32,9 @@ postRoutes.route("/").get(function(req: any, res: any) {
 });
 
 // Defined edit route
-postRoutes.route("/edit/:id").get(function(req: any, res: any) {
+postRoutes.route("/edit/:id").get(function (req, res) {
   let id = req.params.id;
-  Post.findById(id, function(err: string, post: any) {
+  Post.findById(id, function (err, post) {
     if (err) {
       res.json(err);
     }
@@ -42,8 +43,8 @@ postRoutes.route("/edit/:id").get(function(req: any, res: any) {
 });
 
 //  Defined update route
-postRoutes.route("/update/:id").post(function(req: any, res: any) {
-  Post.findById(req.params.id, function(err: string, post: any) {
+postRoutes.route("/update/:id").post(function (req, res) {
+  Post.findById(req.params.id, function (err, post) {
     if (!post) res.status(404).send("data is not found");
     else {
       post.title = req.body.title;
@@ -61,11 +62,20 @@ postRoutes.route("/update/:id").post(function(req: any, res: any) {
 });
 
 // Defined delete | remove | destroy route
-postRoutes.route("/delete/:id").delete(function(req: any, res: any) {
-  Post.findByIdAndRemove({ _id: req.params.id }, function(err: string) {
+postRoutes.route("/delete/:id").delete(function (req, res) {
+  Post.findByIdAndRemove({ _id: req.params.id }, function (err) {
     if (err) res.json(err);
     else res.json("Successfully removed");
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+  })
+}
 
 module.exports = postRoutes;

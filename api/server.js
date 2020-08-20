@@ -6,8 +6,9 @@ const bodyParser = require("body-parser");
 const PORT = 4000;
 const cors = require("cors");
 const mongoose = require("mongoose");
-const config = require("./DB.ts");
+const config = require("./DB.js");
 const postRoute = require("./post.route");
+const path = require('path');
 
 
 mongoose.Promise = global.Promise;
@@ -17,7 +18,7 @@ mongoose
     () => {
       console.log("Database is connected");
     },
-    (err: string) => {
+    (err) => {
       console.log("Can not connect to the database" + err);
     }
   );
@@ -28,6 +29,11 @@ app.use(bodyParser.json());
 
 app.use("/posts", postRoute);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("Server is running on Port:", PORT);
 });
+
+
+
+
+//
