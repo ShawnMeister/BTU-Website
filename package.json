@@ -11,7 +11,7 @@
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint",
 		"test": "test",
-		"start": "npx nodemon api/server.ts"
+		"start": "nodemon api/server.ts"
 	},
 	"main": "index.ts",
 	"dependencies": {
