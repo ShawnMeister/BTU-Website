@@ -1,5 +1,5 @@
 // post.model.js
-export { };
+
 const express = require("express");
 const postRoutes = express.Router();
 const path = require('path');

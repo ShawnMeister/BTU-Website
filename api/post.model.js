@@ -1,5 +1,5 @@
 // post.model.ts
-export {};
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
