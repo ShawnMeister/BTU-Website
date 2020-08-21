@@ -1,33 +1,39 @@
 <template>
 	<div class="home">
 		<img alt="Vue logo" src="../assets/logo.png" />
-		<h1>This is the home page.</h1>
-		<br />
-		<h3>Now login</h3>Username:
-		<input v-model="username" placeholder="username" />
+		<h1>Login</h1>
+		<br />Username:
+		<input v-model="username" placeholder />
 		<br />
 		<br />Password:
-		<input v-model="password" placeholder="password" />
+		<input type="password" v-model="password" placeholder />
 		<br />
 		<br />
-		<button class="btn btn-primary font-weight-bold">Submit</button>
+		<button v-on:click="submit" class="btn btn-primary font-weight-bold">Submit</button>
 		<br />
 		<br />
-
 		The username is {{username}}
 	</div>
 </template>
 
-<script lang="ts">
-	import {Vue} from 'vue-property-decorator';
+<script >
+	// import {Vue} from 'vue-property-decorator';
+	require("dotenv").config();
 
-
-	export default class Home extends Vue {
+	export default {
 		data() {
 			return {
-				username: '',
-				password: '',
-			}
-		}
-	}
+				username: "test",
+				password: "",
+			};
+		},
+		props: ["password"],
+		methods: {
+			submit: function (event) {
+				
+				alert(this.username);
+				alert(process.env.DB_PASS);
+			},
+		},
+	};
 </script>

@@ -69,13 +69,13 @@ postRoutes.route("/delete/:id").delete(function (req, res) {
   });
 });
 
-if (process.env.NODE_ENV === 'production') {
-  // set static folder
-  app.use(express.static('build'));
+// if (process.env.NODE_ENV === 'production') {
+//   // set static folder
+//   app.use(express.static('build'));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-  })
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+//   })
+// }
 
 module.exports = postRoutes;
