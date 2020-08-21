@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 
-module.exports = {
+module.exports={
 	//to run locally use this
 	// DB: "mongodb://localhost:27017/mevncrud",
 
