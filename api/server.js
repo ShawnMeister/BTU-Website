@@ -1,8 +1,9 @@
 // server.js
-const morgan=require('morgan')
-const fs=require('fs')
-const jwt = require('jsonwebtoken');
-require('dotenv').config()
+
+// const morgan=require('morgan')
+// const fs=require('fs')
+// const jwt = require('jsonwebtoken');
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -22,8 +23,7 @@ mongoose
 	})
 	.then(
 		() => {
-      console.log("Database is connected");
-
+			console.log("Database is connected");
 		},
 		(err) => {
 			console.log("Can not connect to the database" + err);
@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 app.use("/posts", postRoute);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
 	console.log("Server is running on Port:", PORT);
 });
 
