@@ -1,25 +1,34 @@
 // server.js
-
+const morgan=require('morgan')
+const fs=require('fs')
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = 4000;
+const PORT = 8081;
 const cors = require("cors");
 const mongoose = require("mongoose");
-const config = require("./DB.ts");
+const config = require("./DB.js");
 const postRoute = require("./post.route");
+const path = require("path");
 
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(config.DB, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(
-    () => {
+	.connect(config.DB, {
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+		useFindAndModify: false,
+	})
+	.then(
+		() => {
       console.log("Database is connected");
-    },
-    (err: string) => {
-      console.log("Can not connect to the database" + err);
-    }
-  );
+
+		},
+		(err) => {
+			console.log("Can not connect to the database" + err);
+		}
+	);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,5 +37,7 @@ app.use(bodyParser.json());
 app.use("/posts", postRoute);
 
 app.listen(PORT, function() {
-  console.log("Server is running on Port:", PORT);
+	console.log("Server is running on Port:", PORT);
 });
+
+//

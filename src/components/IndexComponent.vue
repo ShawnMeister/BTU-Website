@@ -59,16 +59,26 @@
 			};
 		},
 		created() {
-			let uri = "http://localhost:4000/posts";
+			let uri = "http://localhost:8081/posts";
 			this.axios.get(uri).then((response) => {
 				this.posts = response.data;
 			});
 		},
 		methods: {
 			deletePost(id) {
-				let uri = `http://localhost:4000/posts/delete/${id}`;
+				let uri = `http://localhost:8081/posts/delete/${id}`;
+				console.log(id);
+				console.log(this.posts.findIndex((i) => i._id == id));
+
 				this.axios.delete(uri).then((response) => {
-					this.posts.splice(this.posts.indexOf(id), 1);
+					// probably the right way below
+					this.posts.splice(
+						this.posts.findIndex((i) => i._id == id),
+						1
+					);
+
+					// wrong way below
+					// 	this.posts.splice(this.posts.indexOf(id), 1);
 				});
 			},
 		},
