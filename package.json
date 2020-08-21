@@ -13,7 +13,7 @@
 		"test": "test",
 		"start": "node api/server.js",
 		"backend": "nodemon api/server.js",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build",
+		"heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
 		"dev": "concurrently \"npm run backend\" \"npm run frontend\""
 	},
 	"main": "index.js",

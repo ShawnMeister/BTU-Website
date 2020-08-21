@@ -26,7 +26,7 @@
 			</div>
 			<br />
 			<div class="form-group">
-				<button class="btn btn-primary  font-weight-bold">Create</button>
+				<button class="btn btn-primary font-weight-bold">Create</button>
 			</div>
 		</form>
 	</div>
@@ -41,7 +41,7 @@
 		},
 		methods: {
 			addPost() {
-				let uri = "http://localhost:4000/posts/add";
+				let uri = "http://localhost:8081/posts/add";
 				this.axios.post(uri, this.post).then(() => {
 					this.$router.push({ name: "posts" });
 				});
