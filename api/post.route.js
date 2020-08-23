@@ -2,7 +2,7 @@
 
 const express = require("express");
 const postRoutes = express.Router();
-const path = require('path');
+// const path = require('path');
 
 // Require Post model in our routes module
 let Post = require("./post.model");
