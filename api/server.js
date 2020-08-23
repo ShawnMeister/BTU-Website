@@ -15,6 +15,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const config = require("./DB.js");
 const postRoute = require("./post.route");
+const userRoute = require("./user.route");
 const path = require("path");
 const fs = require("fs");
 const passport = require("passport");
@@ -31,9 +32,9 @@ const session = require("express-session");
 //   users.find(user => user.username === username);
 // });
 
-const jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
-jwtOptions.secretOrKey = "movieratingapplicationsecretkey";
+// const jwtOptions = {};
+// jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+// jwtOptions.secretOrKey = "movieratingapplicationsecretkey";
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -56,6 +57,7 @@ app.use(passport.initialize());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/posts", postRoute);
+app.use("/users", userRoute);
 app.use(flash());
 app.use(
   session({
@@ -73,8 +75,6 @@ app.listen(PORT, function() {
 });
 
 //
-
-
 
 // // Include controllers
 // fs.readdirSync("api/controllers").forEach(function(file) {

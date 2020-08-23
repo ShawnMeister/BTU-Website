@@ -4,20 +4,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Define collection and schema for Post
-let Post = new Schema(
+let User = new Schema(
 	{
-		title: {
+		username: {
 			type: String,
 		},
-		body: {
+		password: {
 			type: String,
 		},
 	},
 	{
-		collection: "posts",
+		collection: "users",
 	}
 );
 
 
 
-module.exports = mongoose.model("Post", Post);
+module.exports = mongoose.model("User", User);
