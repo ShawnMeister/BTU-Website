@@ -33,6 +33,7 @@ export default {
   methods: {
     addUser () {
       const uri = 'http://localhost:8081/users/add'
+      this.user.password = 5
       this.axios.post(uri, this.user).then(() => {
         this.$router.push({ name: 'users' })
       })

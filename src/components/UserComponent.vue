@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-md-9"></div>
           <div class="col-md-2">
-            <router-link :to="{ name: 'create' }" class="btn btn-primary"
+            <router-link :to="{ name: 'Home' }" class="btn btn-primary"
               >Create User</router-link
             >
           </div>

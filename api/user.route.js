@@ -11,6 +11,7 @@ userRoutes.route("/add").post(function(req, res) {
   user
     .save()
     .then(() => {
+      
       res.status(200).json({ business: "business in added successfully" });
     })
     .catch(() => {
