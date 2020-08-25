@@ -21,8 +21,7 @@ const fs = require("fs");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const passportJWT = require("passport-jwt");
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
+
 const flash = require("express-flash");
 const session = require("express-session");
 
@@ -53,22 +52,22 @@ mongoose
   );
 
 app.use(cors());
-app.use(passport.initialize());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/posts", postRoute);
 app.use("/users", userRoute);
-app.use(flash());
-app.use(
-  session({
-    secret: process.env.DB_PASS,
-    resave: false,
-    saveUninitialized: false
-  })
-);
+// app.use(flash());
+// app.use(
+//   session({
+//     secret: process.env.DB_PASS,
+//     resave: false,
+//     saveUninitialized: false
+//   })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.listen(PORT, function() {
   console.log("Server is running on Port:", PORT);
@@ -83,3 +82,38 @@ app.listen(PORT, function() {
 //     route.controller(app);
 //   }
 // });
+
+/////////////////////////////////////
+//           JWT STUFF             //
+/////////////////////////////////////
+
+var JwtStrategy = require("passport-jwt").Strategy,
+  ExtractJwt = require("passport-jwt").ExtractJwt;
+var opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = "secret";
+// opts.issuer = "accounts.examplesoft.com";
+// opts.audience = "yoursite.net";
+passport.use(
+  new JwtStrategy(opts, function(jwt_payload, done) {
+    User.findOne({ id: jwt_payload.sub }, function(err, user) {
+      if (err) {
+        return done(err, false);
+      }
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+        // or you could create a new account
+      }
+    });
+  })
+);
+
+app.post(
+  "/users/authenticate",
+  passport.authenticate("jwt", { session: false }),
+  function(req, res) {
+    res.send(req.user.password);
+  }
+);

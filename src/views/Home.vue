@@ -21,7 +21,6 @@
 
 <script >
 // import {Vue} from 'vue-property-decorator';
-require('dotenv').config()
 
 export default {
   data () {
@@ -31,7 +30,7 @@ export default {
   },
   methods: {
     addUser () {
-      const uri = 'http://localhost:8081/users/add'
+      const uri = 'http://localhost:8081/users/authenticate'
       this.axios.post(uri, this.user).then(() => {
         this.$router.push({ name: 'users' })
       })
